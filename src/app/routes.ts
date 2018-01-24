@@ -9,6 +9,7 @@ import {AuthGuard} from './_guards/auth.guard';
  * The order matters: ** needs to be to the bottom because it matches everything
  */
 export const appRoutes: Routes = [
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {
     path: '',
