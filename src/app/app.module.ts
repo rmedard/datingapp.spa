@@ -27,6 +27,8 @@ import {NgxGalleryModule} from 'ngx-gallery';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import {MemberEditResolver} from './_resolvers/member-edit-resolver';
 import {PreventUnsavedChangesGuard} from './_guards/prevent-unsaved-changes.guard';
+import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+import {FileUploadModule} from 'ng2-file-upload';
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import {PreventUnsavedChangesGuard} from './_guards/prevent-unsaved-changes.guar
     MessagesComponent,
     MemberCardComponent,
     MemberDetailComponent,
-    MemberEditComponent
+    MemberEditComponent,
+    PhotoEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import {PreventUnsavedChangesGuard} from './_guards/prevent-unsaved-changes.guar
     TabsModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     AuthModule,
-    NgxGalleryModule
+    NgxGalleryModule,
+    FileUploadModule
   ],
   providers: [
     AuthService,
