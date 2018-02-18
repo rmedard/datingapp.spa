@@ -19,6 +19,7 @@ export class PhotoEditorComponent implements OnInit {
   hasBaseDropZoneOver = false;
   baseUrl = environment.apiUrl;
   currentMain: Photo;
+
   // @Output() getMemberPhotoChange = new EventEmitter<string>();
 
   constructor(private authService: AuthService, private userService: UserService, private alertify: AlertifyService) {
@@ -70,5 +71,17 @@ export class PhotoEditorComponent implements OnInit {
     }, error => {
       this.alertify.error(error);
     });
+  }
+
+  deletePhoto(id: number) {
+    this.alertify
+      .confirm('Are you sure?', () => {
+        this.userService.deletePhoto(this.authService.decodedToken.nameid, id).subscribe(() => {
+          this.photos.splice(_.findIndex(this.photos, {id: id}), 1);
+          this.alertify.success('Photo has been deleted');
+        }, error => {
+          this.alertify.error('Failed to delete photo: ' + error);
+        });
+      });
   }
 }
